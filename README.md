@@ -1,5 +1,5 @@
-MB701 Reverse engeneeering effort
-=================================
+MB701 Reverse engeneering effort
+================================
 
 This git repository include all the file related to the reverse engineering of the MinBay MB701 Pixel Art Board.
 
