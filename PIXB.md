@@ -7,11 +7,9 @@ PIXB File format
 struct PIXBFile:
     struct Header:
         char[4]  = "PIXB"
-        uint16_t unknown
-        uint32_t Version (?)
-        uint16_t Canvas size
-        uint32_t unknoxn
-        char[16]: unknown
+        uint16_t: unknown
+        uint16_t: Canvas size
+        char[24]: unknown
 
     char[928]: data
 ```
@@ -35,8 +33,34 @@ Canvas size can take only 3 values:
  - 1: 24x24 canvas
  - 2: 32x32 canvas
 
+The unknown part do store information, but it is unknown as the main application hasn't been reversed yet.
+The iOS/Android app does not seems to use any of it, not the official windows conversion app.
+
+## Example unpacking code
+
+```python3
+import struct
+
+[...]
+
+def unpack7to8(data):
+    ret = []
+    val = struct.unpack("<Q", data + b"\0")[0]
+    for i in range(8):
+        ret.append(val & 0x7F)
+        val = val >> 7
+    return ret
+```
+
+This function take a binary string and return an array with pixel value in order left to right. 
+
+You can find in [pixb2img.py](sample_tools/pixb2img.py) a fully functional example application reading a PIXB file and converting it into an 
+image format of your choice.
 
 ## Color palette
+
+The palette here is described in hexadecimal as in `0xRRGGBB`.
+Depending on the tool you are using you make need to swap the red and blue components.
 
 ```
 0xFFFFFF, 0xE9BFA8, 0xECC7AC, 0xEFCFB0, 0xF4DDB7, 0xF7E4BB, 0xF7E4BB, 0xFAEBBE, 0xFDF2C1, 0xFFF9C4, 
@@ -50,4 +74,3 @@ Canvas size can take only 3 values:
 0x825B1A, 0x8F701A, 0x9E8519, 0xAD9B16, 0xBAAC12, 0x98981F, 0x6F8127, 0x456C2B, 0x005A2C, 0x006145,
 0x006864, 0x007086, 0x0077A4, 0x266992, 0x3F537A, 0x4A3762, 0x500D4D, 0x560C3E, 0x58102E, 0x591320
 ```
-
