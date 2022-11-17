@@ -118,7 +118,23 @@ Code clear the canvas to all white whatever the value. Not sure what the byte 3 
  - `F7 16 2E 00`
 
 
- ### F8: Not used
+ ### F8: Unknown (Panning?)
+
+| byte 0 | byte 1    | byte 2    | byte 3 | byte 4 | byte 5 | 
+|--------|-----------|-----------|--------|--------|--------|
+| F8     | Stroke #1 | Stroke #2 | ???    | ???    | ???    |
+
+This command is present in at least one file (P0003_09.DAT) but is not handled by the
+iOS/Android app. Having looked at the history of that image on the device at one point 
+the whole image shift by 1 and 1 pixel, this could be related as the command in the file is
+
+`F8 0F 58 04 01 01`
+
+And we clearly have a 1 and 1 in the bytes, 4 could be related to the direction.
+
+More test need to be done.
+
+
  ### F9: Not used
 
 

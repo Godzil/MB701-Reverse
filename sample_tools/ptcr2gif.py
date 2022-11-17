@@ -97,6 +97,7 @@ class CommandHandler:
             b'\xF5': self.replace_color,
             b'\xF6': self.erase_pixel,
             b'\xF7': self.clear_canvas,
+            b'\xF8': self.pan_canvas,
             #
             b'\xFA': self.set_color,
             b'\xFB': self.set_canvas_resolution,
@@ -220,6 +221,17 @@ class CommandHandler:
 
         # Always read 3 bytes (2 for stroke, 1 for ?)
         return 3
+
+    def pan_canvas(self):
+        self._was_a_stroke = True
+        self._get_stroke_number()
+
+        # This may be panning, not sure.
+
+        data = self._file.read(3)
+        data = struct.unpack("BBB", data)
+
+        return 5
 
     def set_color(self):
         self._was_a_stroke = False
