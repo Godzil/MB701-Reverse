@@ -53,6 +53,15 @@ V
  - `F0 0A 14 01 34 40`: 1 pixel at [13;16]
  - `F0 0A 11 05 30 4C 66 66`: 5 pixels at [12;19], [13;19], [14;19], [15;19], [16;19]
 
+ #### Note
+
+Some of the files stored in the device seems to not store the right value for pixel count, 
+but when counting they have not more than 255 pixels, so it's a bit unclear why. Need more investigation on that.
+Also it is unknown at the moment what happen if there are more than 255 pixels in one stroke, which is technically
+possible as 32x32 pixel = 1024.
+
+> After some test, well it seems drawing too many pixel in one stroke do crash the art board :-)
+
 
  ### F1: drawLine
 
