@@ -7,8 +7,8 @@ PTCR File:
 struct PTCRFile:
     struct Header:
         char[4]  = "PTCR"
-        uint32_t version
-        uint32_t numberOfCommands (only drawable commands?)
+        uint32_t version?
+        uint32_t numberOfCommands? (only drawable commands?)
         uint32_t fileSize - Header
         char[12]: unknown
         char[4] = 0xAA, 0x55, 0xAA, 0x55
@@ -88,6 +88,9 @@ The circle is drawn in the rectangle designed by [x0;y0] - [x1; y1]
 |--------|-----------|-----------|-----------|----------------|
 | F5     | Stroke #1 | Stroke #2 | New color | Replaced color |
 
+Colors are stored with an offet of 28 (0x1C). Reason unknown.
+So if you read 28, the actual color to use is 0
+
  #### Examples:
  - `F5 0A 5B 5B 5F`
  - `F5 0A 7B 2A 5B`
@@ -124,9 +127,12 @@ Code clear the canvas to all white whatever the value. Not sure what the byte 3 
 |--------|-----------|--------|
 | FA     | new color | ???    |
 
+Colors are stored with an offet of 28 (0x1C). Reason unknown.
+So if you read 28, the actual color to use is 0
+
  #### examples:
- - `FA 67 6A` : now work with colour 0x67
- - `FA 20 67` : now work with colour 0x20
+ - `FA 67 6A` : now work with colour 0x4B
+ - `FA 20 67` : now work with colour 0x04
 
 
  ### FB: setCanvasResolution
@@ -134,7 +140,7 @@ Code clear the canvas to all white whatever the value. Not sure what the byte 3 
 |--------|-----------------|---------------|
 | FB     | horizontal size | vertical size |
 
-_If the value is not 16, 24 or 32 it will default back to 16_
+_If the value is not 0 (16x16), 1 (24x24) or 2 (32x32) it will default back to 0_
 
 
  ### FC: Not used

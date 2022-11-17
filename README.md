@@ -26,10 +26,12 @@ the update file properly leading the board to crash in weird way.
 
 ### TODO
  - [ ] Documenting the update file format
- - [ ] Creating a sample tool to create animated an gif from a .dat file
- - [ ] Finish the the pixb2img to crop image if wanted (it only show imaged in their full 32x32 format)
+ - [ ] Documenting the BLE protocol
+ - [X] Creating a sample tool to create animated an gif from a .dat file
+ - [ ] Finish the pixb2img to crop image if wanted (it only show imaged in their full 32x32 format)
  - [ ] Hardware documentation, there is definitely a serial port and other port on the board.
  - [ ] Maybe add datasheet of the components used on the board.
+ - [ ] Find how they draw straigh lines and circle to have an exact match.
 
 ## Note
 This repository is obviously not related in anyway with MinBay the creators of the MB701.
