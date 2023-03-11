@@ -74,15 +74,29 @@ stroke, it is likely they also store this number with a non 8bit cap and the val
 
 #### Explanation
 
-Copying an update file to the MB701 from a Mac OS based system will not work, properly the file copy finish without any error
-but the artboard will crash when it is ejected.
+Copying an update file to the MB701 from a Mac OS based system will not work, properly the file copy finish without any error but the artboard will crash when it is ejected.
 Doing the same thing from a windows system do not crash the board.
 
 #### Reason
 
-Unclear at the moment, but probably linked with the way they present a FAT filesystem to the USB as I think it does not use a
-native FAT internally.
+Unclear at the moment, but probably linked with the way they present a FAT filesystem to the USB as I think it does not use a native FAT internally.
 
 | Discoverd  | Affected firmware | Fixed on Version |
 |------------|-------------------|------------------|
 | 01/11/2022 | All known         | N/A              |
+
+ ### 3 - Replay may not give the exact same output as final image
+ 
+#### Explanation
+Some of the replay do not output the exact same image as the stored image. This can also happen with user generated contents.
+
+#### Reason
+Probably due to some bugs in previous version, or the Pixel overflow bug, the replay file may not generate the same output as the final image.
+It is most likley due to the pixel overflow bug and some change in the format while development.
+
+It is quite unlikely a fix can be done as in case of the pixel tool overflow there is dataloss.
+Also the official smartphone app and the board show the same problem as the tools provided here.
+
+| Discoverd  | Affected firmware | Fixed on Version |
+|------------|-------------------|------------------|
+| 20/11/2022 | All known         | N/A              |
