@@ -20,8 +20,14 @@ type of file related to the MB701.
 
 ### Output example
 
+![P0001_08.png](samples/P0001_08.png) ![P0001_08.gif](samples/P0001_08.gif)  
+P0001_08 - Artist: Unknown (Minbay?)
+
 ![P0002_18.png](samples/P0002_18.png) ![P0002_18.gif](samples/P0002_18.gif)  
 P0002_18 - Artist: Unknown (Minbay?)
+
+![P0003_09.png](samples/P0003_09.png) ![P0003_09.gif](samples/P0003_09.gif)  
+P0003_09 - Artist: Unknown (Minbay?)
 
 ### TODO
  - [ ] Documenting the update file format
@@ -74,7 +80,7 @@ Doing the same thing from a windows system do not crash the board.
 
 #### Reason
 
-Unclear at the moment, but probably linked with the way show a FAT filesystem to the USB as I think it does not use a
+Unclear at the moment, but probably linked with the way they present a FAT filesystem to the USB as I think it does not use a
 native FAT internally.
 
 | Discoverd  | Affected firmware | Fixed on Version |
