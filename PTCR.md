@@ -81,7 +81,7 @@ A line is drawn between [x0;y0] and [x1; y1]
 |--------|-----------|-----------|--------|--------|--------|--------| ------ |
 | F2     | Stroke #1 | Stroke #2 | ???    | x0     | y0     | x1     | y1     |
 
-The circle is drawn in the rectangle designed by [x0;y0] - [x1; y1]
+The circle is drawn in the rectangle defined by [x0;y0] - [x1; y1]
 
  #### Examples:
  - `F2 0A 55 02 34 24 54 44`
@@ -120,7 +120,7 @@ So if you read 28, the actual color to use is 0
 |--------|-----------|-----------|------------------------|
 | F7     | Stroke #1 | Stroke #2 | ??? (Color to clear?)  |
 
-Code clear the canvas to all white whatever the value. Not sure what the byte 3 is suppose to represent.
+Clear the canvas to all white whatever the value. Not sure what the byte 3 is suppose to represent.
 
  #### Examples:
  - `F7 0C 4B 00`
@@ -177,7 +177,7 @@ _If the value is not 0 (16x16), 1 (24x24) or 2 (32x32) it will default back to 0
 ## How stroke number work:
 
 For some reason 0 is represented by 0x0A (10) 0x0A. 
-When the number of storke is increased the second byte is incremented by 1. 
+When the number of stroke is increased the second byte is incremented by 1. 
 Then when the second byte reach 0x9F (159) the first one will be incremented and the
 second byte reset to 0x0A.
 
@@ -185,16 +185,16 @@ second byte reset to 0x0A.
 Example:
 
 
-| Hex   | Binary              | Decilam |
-|-------|---------------------|---------|
-| 0A 0A | 0000 1010 0000 1010 | 10  10  |
-| ...   |                     |         |
-| 0A 9F | 0000 1010 1001 1111 | 10  159 |
-| 0B 0A | 0000 1011 0000 1010 | 11  10  |
-| ...   |                     |         |
-| 0B 9F | 0000 1011 1001 1111 | 11  159 |
-| 0C 0A | 0000 1100 0000 1010 | 12  10  |
-| ...   |                     |         |
-| 18 89 | 0001 1000 1000 1001 | 24  137 |
+| Hex   | Binary              | Decimal | Value |
+|-------|---------------------|---------|-------|
+| 0A 0A | 0000 1010 0000 1010 | 10  10  | 0     |
+| ...   |                     |         |       |
+| 0A 9F | 0000 1010 1001 1111 | 10  159 | 149   |
+| 0B 0A | 0000 1011 0000 1010 | 11  10  | 150   |
+| ...   |                     |         |       |
+| 0B 9F | 0000 1011 1001 1111 | 11  159 | 299   |
+| 0C 0A | 0000 1100 0000 1010 | 12  10  | 300   |
+| ...   |                     |         |       |
+| 18 89 | 0001 1000 1000 1001 | 24  137 | 3727  |
 
 _Why does it work this way? Your guess is as good as mine._
